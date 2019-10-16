@@ -20,5 +20,6 @@ from questions import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('questions/', include('questions.urls')),
+    path('accounts/', include('accounts.urls')),
     path('', views.index),
 ]
