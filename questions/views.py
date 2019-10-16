@@ -60,3 +60,11 @@ def update(request, id):
         'form': form,
     }
     return render(request, 'questions/form.html', context)
+
+def delete(request, id):
+    if request.method == "POST":
+        question = get_object_or_404(Question, id=id)
+        question.delete()
+        return redirect('questions:index')
+    else:
+        return redirect('questions:detail', id)
