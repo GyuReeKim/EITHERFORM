@@ -76,7 +76,7 @@ def choice_create(request, id):
     if request.method == "POST":
         choice_form = ChoiceForm(request.POST)
         if choice_form.is_valid():
-            # 
+            # 비어있는 값(question)이 있기 때문에 commit=False를 적어준다.
             choice = choice_form.save(commit=False)
             choice.question = question
             choice.save()
