@@ -1,10 +1,19 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import QuestionForm
+from .models import Question
 
 # Create your views here.
 def index(request):
+    questions = Question.objects.all()
     # 나중에 있을 충돌을 방지하기 위해 templates 안에 폴더를 따로 만들어준다.
-    return render(request, 'questions/index.html')
+    return render(request, 'questions/index.html', {'questions': questions})
+
+def detail(request, id):
+    question = get_object_or_404(Question, id=id)
+    context = {
+        'question': question,
+    }
+    return render(request, 'questions/detail.html', context)
 
 def create(request):
     # 1. 사용자가 데이터를 입력하기 위해서 GET요청(폼을 요청)
@@ -37,4 +46,3 @@ def create(request):
     # 5. form.html 보여주기
     # 11. form.html 보여주기
     return render(request, 'questions/form.html', context)
-    # return render(request, 'questions/form.html', {'form': form,})
