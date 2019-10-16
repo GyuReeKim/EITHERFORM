@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login # 경로 이름이 겹치므로 함수 이름을 변경
 from django.contrib.auth import logout as auth_logout
 
 # Create your views here.
