@@ -17,5 +17,17 @@
       {% bootstrap_form choice_form %}
       <input type="submit" value="고르기" class="btn btn-primary">
     </form>
+
+    {% for choice in question.choice_set.all %}
+      {% if choice.pick == 1 %}
+        <div class="alert alert-primary" role="alert">
+          {{choice.comment}}
+        </div>
+      {% else %}
+        <div class="alert alert-danger" role="alert">
+          {{choice.comment}}
+        </div>
+      {% endif %}
+    {% endfor %}
   </div>
 {% endblock %}
